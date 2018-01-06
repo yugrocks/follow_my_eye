@@ -21,10 +21,10 @@ def get_model():
     model.add(Flatten())
     #Now two hidden(dense) layers:
     model.add(Dense(output_dim = 500, activation = 'relu',
-                    #kernel_regularizer=regularizers.l2(0.01)
+                    kernel_regularizer=regularizers.l2(0.1)
                     ))
     model.add(Dense(output_dim = 500, activation = 'relu',
-                    #kernel_regularizer=regularizers.l2(0.01)
+                    kernel_regularizer=regularizers.l2(0.1)
                     ))
     #output layer
     model.add(Dense(output_dim = 2)) # for X and Y coordinates on the screen
