@@ -16,15 +16,18 @@ def get_model():
     #add conv layers and pooling layers 
     model.add(Convolution2D(32,3,3, input_shape=(50,50,1),activation='relu'))
     model.add(MaxPooling2D(pool_size=(2,2)))
-    #model.add(Convolution2D(32,3,3, input_shape=(200,200,1),activation='relu'))
-    #model.add(MaxPooling2D(pool_size=(2,2)))
+    model.add(Convolution2D(32,3,3, input_shape=(200,200,1),activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2,2)))
     model.add(Flatten())
     #Now two hidden(dense) layers:
     model.add(Dense(output_dim = 500, activation = 'relu',
                     #kernel_regularizer=regularizers.l2(0.01)
                     ))
+    model.add(Dense(output_dim = 500, activation = 'relu',
+                    #kernel_regularizer=regularizers.l2(0.01)
+                    ))
     #output layer
-    model.add(Dense(output_dim = 2))
+    model.add(Dense(output_dim = 2)) # for X and Y coordinates on the screen
     #Now copile it
     model.compile(optimizer='adam', loss='mean_absolute_error', metrics=['mae'])
     return model
