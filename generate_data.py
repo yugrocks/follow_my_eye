@@ -1,6 +1,7 @@
 import win32api
 import cv2
 from detect import detector
+import pandas as pd
 
 def get_cursor_position():
     x, y = win32api.GetCursorPos()
@@ -37,7 +38,7 @@ def generate_data():
             eye = frame[y:y+h, x:x+w]
             eye = cv2.cvtColor( eye, cv2.COLOR_RGB2GRAY )
             eye = cv2.resize(eye, (50, 50))
-            cv2.imwrite('.\\Data\\eye_images\\eye_{}.jpg'.format(i), eye)
+            cv2.imwrite('.\\data\\eye_images\\eye_{}.jpg'.format(i), eye)
             cursor.append(get_cursor_position())
             i += 1
             print(i)
@@ -54,4 +55,6 @@ def generate_data():
 
 
 cursor = generate_data()
+df = pd.DataFrame(cursor)
+df.to_csv("data/cursor_data.csv")
 
