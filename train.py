@@ -34,8 +34,8 @@ def get_model():
     
 
 def load_data():
-    image_path = ".\\Data\\eye_images\\"
-    labels = ".\\Data\\cursor_data.csv"
+    image_path = ".\\data\\eye_images\\"
+    labels = ".\\data\\cursor_data.csv"
     X = []
     y = []
     df = pd.read_csv(labels)
